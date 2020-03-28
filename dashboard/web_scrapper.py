@@ -43,7 +43,7 @@ def get_state_data():
         table = soup.find('div', attrs={'id': 'cases'}).find('table')
 
         rows = table.find_all('tr')
-        rows = rows[1:len(rows) - 1]
+        rows = rows[1:len(rows) - 2]
         state_dict = {}
         state_arr = []
         column = ['state', 'total_cases', 'foreign_cases', 'cured', 'deaths']
@@ -62,3 +62,4 @@ def get_state_data():
         print("Error occurred :" + str(e))
         status = 1
     return data, status
+
