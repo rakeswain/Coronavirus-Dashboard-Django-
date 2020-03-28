@@ -26,6 +26,7 @@ def get_data():
             if count > 10:
                 break;
         data = country_data.copy()
+        data['total_cases']
     except Exception as e:
         print("Error occurred :" + str(e))
         status = 1
@@ -53,7 +54,7 @@ def get_state_data():
             for col in cols:
                 state_dict[column[count]] = col.text
                 count += 1
-                if count>4:
+                if count > 4:
                     break;
             count = 0
             state_arr.append(state_dict.copy())
@@ -62,4 +63,5 @@ def get_state_data():
         print("Error occurred :" + str(e))
         status = 1
     return data, status
+
 
