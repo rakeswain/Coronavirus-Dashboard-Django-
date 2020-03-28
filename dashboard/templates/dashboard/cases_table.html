@@ -1,0 +1,25 @@
+<table class="table table-fixed" style="overflow:scroll">
+    <thead class="thead-light">
+
+
+    <tr>
+        <th>State</th>
+        <th>Total Active Cases</th>
+        <th>Foreign Nationals</th>
+        <th>Cured</th>
+        <th>Deaths</th>
+    </tr>
+    </thead>
+
+    {% for data in state_data %}
+    <tr>
+        <th>{{data.state}}</th>
+        <th>{{data.total_cases}}</th>
+        <th>{{data.foreign_cases}}</th>
+        <th>{{data.cured}}</th>
+        <th>{{data.deaths}}</th>
+    </tr>
+    {% endfor %}
+
+
+</table>

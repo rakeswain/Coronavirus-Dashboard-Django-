@@ -1,0 +1,33 @@
+{% load static %}
+<div class="dashboard p-10" xmlns="http://www.w3.org/1999/html">
+    <div class="card shadow h-100">
+        <div class="card-body bg-info"><div class="d-flex flex-column justify-content-center h-100" style="text-align:center"><h1>{{total_data.total_cases}}</h1>
+        <img src="{% static 'img/confirmed.png' %}" height="30" width="30" style="float:left">
+        </div></div>
+
+        <div class="card-footer" style="text-align:center"><h6>Total Cases</h6></div>
+    </div>
+    <div class="card shadow h-100">
+        <div class="card-body bg-warning"><div class="d-flex flex-column justify-content-center h-100" style="text-align:center"><h1>{{total_data.active_cases}}</h1>
+        <img src="{% static 'img/symptoms.png' %}" height="30" width="30" style="float:left">
+        </div></div>
+
+        <div class="card-footer"><h6>Active Cases</h6></div>
+    </div>
+    <div class="card shadow h-100">
+        <div class="card-body bg-success"><div class="d-flex flex-column justify-content-center h-100" style="text-align:center"><h1>{{total_data.total_recovered}}</h1>
+          <img src="{% static 'img/recovered.png' %}" height="30" width="30" style="float:left">
+        </div></div>
+
+        <div class="card-footer "><h6>Recovered</h6></div>
+    </div>
+    <div class="card shadow h-100 ">
+        <div class="card-body bg-danger  "><div class="d-flex flex-column justify-content-center h-100" style="text-align:center"><h1>{{total_data.total_deaths}}</h1>
+         <img src="{% static 'img/deaths.png' %}" height="30" width="30" style="float:left">
+        </div></div>
+
+        <div class="card-footer"><h6>Deaths</h6></div>
+    </div>
+
+
+</div>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Covid India Dashboard by Rakesh Swain</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
+    <style>
+    .content{
+             position: absolute;
+          }
+     .dashboard{
+            display:flex;
+            flex-direction:row;
+            width:100%;
+            height:100%;
+            padding:10px;
+            justify-content:space-between;s
+     }
+     .dashboard>div{
+        flex: 1 1 auto;
+        text-align : center;
+        margin:5px;
+     }
+     .card-body{
+        text-align:center;
+     }
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="content h-100 w-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">COVID-19 India Dashboard</a>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="float:right">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link " href="https://www.linkedin.com/in/rakesh-swain-714b9915b/" target="_blank"
+                   style="float:right">by Rakesh Swain <span class="sr-only">(current)</span></a>
+            </div>
+
+        </div>
+    </nav>
+    <div id="total-content" class="h-40" style="height:30%">
+        {% include "dashboard/home.html" %}
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="nav-item active">
+            <a class="nav-link active" id="state-tab" data-toggle="tab" href="#state-content" role="tab"
+               aria-controls="home" aria-selected="true">
+                <h6>Sate-wise cases</h6>
+                <span>First case was spotted on {{total_data.first_case}} in Kerela</span>
+            </a>
+
+        </li>
+    </ul>
+    <div id="state-content" class="table-responsive h-60" style="height:70%">
+        {% include "dashboard/cases_table.html" %}
+    </div>
+    <!-- Footer -->
+    <footer class="page-footer font-small bg-dark text-white ">
+
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center ">© 2020 Copyright:
+            <a href="https://www.linkedin.com/in/rakesh-swain-714b9915b/"> Rakesh Swain</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+</div>
+
+
+</body>
+<script>
+     $(document).ready(function () {
+                setInterval(function () {
+                  update_total()
+                  update_cases()
+                }, 5000);
+            });
+
+            function update_total(){
+
+              $.ajax({
+                        url: 'total-table/',
+                        type: "get",
+                        success: function (data) {
+                            console.log(data);
+                            $('total-content').html(data)
+                        },
+                        error: function (data) {
+                            console.log("Got an error dude " + data);
+                        }
+                    });
+
+
+            }
+            function update_cases(){
+
+              $.ajax({
+                        url: 'cases-table/',
+                        type: "get",
+                        success: function (data) {
+                            console.log(data);
+                            $('state-content').html(data)
+                        },
+                        error: function (data) {
+                            console.log("Got an error dude " + data);
+                        }
+                    });
+
+
+            }
+
+
+
+
+</script>
+</html>
