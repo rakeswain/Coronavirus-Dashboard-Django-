@@ -41,8 +41,7 @@ def get_state_data():
         req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
         page = urlopen(req).read()
         soup = BeautifulSoup(page, 'html.parser')
-        table = soup.find('div', attrs={'id': 'cases'}).find('table')
-
+        table = soup.find('div', attrs={'class': 'data-table'}).find('table')
         rows = table.find_all('tr')
         rows = rows[1:len(rows) - 2]
         state_dict = {}
@@ -63,5 +62,4 @@ def get_state_data():
         print("Error occurred :" + str(e))
         status = 1
     return data, status
-
 
