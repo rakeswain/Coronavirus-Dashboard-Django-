@@ -46,7 +46,7 @@ def get_state_data():
         rows = rows[1:len(rows) - 2]
         state_dict = {}
         state_arr = []
-        column = ['state', 'total_cases', 'foreign_cases', 'cured', 'deaths']
+        column = ['state', 'total_cases', 'cured', 'deaths']
         count = 0
         for row in rows:
             cols = row.find_all('td')[1:]
