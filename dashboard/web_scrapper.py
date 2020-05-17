@@ -16,8 +16,7 @@ def get_data():
         count = 0
         cols = ['country', 'total_cases', 'new_cases', 'total_deaths', 'new_deaths', 'total_recovered', 'active_cases',
                 'serious_cases', 'cases_per_m', 'deaths_per_ms', 'first_case']
-        for col in table.find_all('td'):
-
+        for col in table.find_all('td')[1:]:
             if len(col.text) != 0:
                 country_data[cols[count]] = col.text.strip()
             else:
@@ -43,7 +42,7 @@ def get_state_data():
         soup = BeautifulSoup(page, 'html.parser')
         table = soup.find('div', attrs={'class': 'data-table'}).find('table')
         rows = table.find_all('tr')
-        rows = rows[1:len(rows) - 2]
+        rows = rows[1:len(rows) - 6]
         state_dict = {}
         state_arr = []
         column = ['state', 'total_cases', 'cured', 'deaths']
@@ -62,4 +61,5 @@ def get_state_data():
         print("Error occurred :" + str(e))
         status = 1
     return data, status
+
 
